@@ -4,6 +4,7 @@
 import logging
 import os
 from time import sleep
+import subprocess
 
 # 屏幕分辨率
 device_x, device_y = 1920, 1080
@@ -28,7 +29,7 @@ def tap_screen(x, y):
     base_x, base_y = 1920, 1080
     real_x = int(x / base_x * device_x)
     real_y = int(y / base_y * device_y)
-    os.system('adb shell input tap {} {}'.format(real_x, real_y))
+    subprocess.call( 'D:\\program_test\\yeshen\\Nox\\bin\\nox_adb.exe shell  input tap %d %d '%(real_x,real_y))
 
 
 def do_money_work():
@@ -53,7 +54,16 @@ def do_money_work():
     sleep(step_wait[4])
 
 
+def run():
+    lIndex  =0
+    while(True):
+        print ("round # %d"%lIndex)
+        tap_screen(400, 400)
+        lIndex +=1
+        sleep(3)
+
 if __name__ == '__main__':
-    for i in range(repeat_times):
-        logging.info('round #{}'.format(i + 1))
-        do_money_work()
+    # for i in range(repeat_times):
+    #     logging.info('round #{}'.format(i + 1))
+    #     do_money_work()
+    run()
