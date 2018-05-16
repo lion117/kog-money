@@ -14,7 +14,7 @@ def click(x,y):
     pyautogui.click()
 
 def get_button_center_from_screen(button_png,png_path='pics'):
-    screen = screenshot("screen.png")
+    # screen = screenshot("screen.png")
     button_png = png_path + '\\' + button_png
     start_pos = pngLocate(button_png)
 
@@ -101,6 +101,21 @@ def AutoMouse():
                 time.sleep(10)
                 break
 
+
+def AutoStartAgain():
+    lValidTimes = 0
+    while(True):
+        print (u"try to find start again")
+        x, y = get_button_center_from_screen('tryagain.PNG')
+        if x == 0 and y == 0:
+            click(x,y)
+            lValidTimes +=1
+            print (u"work")
+        else:
+            print (u"did not find the pic")
+        time.sleep(5)
+
 if __name__ == '__main__':
-    AutoMouse()
+    # AutoMouse()
+    AutoStartAgain()
 
